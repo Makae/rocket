@@ -1,0 +1,30 @@
+Fragen an Eckerle
+-----------------
+
+- Haben Sie uns Links, Seiten oder Informationen zu den Verwendung und etc. von Automaten?
+- Was sind Ihre Prioritäten/Schwerpunkte in diesem Projekt
+- Fehlen noch Punkte in unserem Grobablauf oder können wir den so übernehmen?
+- Wöchentliche treffs? Vorschlag: Am Freitag nach dem Automatenfass zusammen ein Scrum Daily/weekly machen damit 
+alle auf dem gleichen Stand sind?
+- Umfang des "Games" klären? Was sollte enthalten sein? was sicher nicht? Scope
+- 
+
+
+
+
+
+
+Automaten für:
+---------------
+weapon - Spielergegenstände
+select - Grundkonfiguration, Schwierigkeitsgrad, Spielererfahrung, Level 
+move - Entscheidungen während dem Spiel
+game - Level abhänging?
+action Handlungen im Spieler.
+
+
+Herausforderungen für den Spieler
+---------------------------------
+Dynamische Theorien - Spieler muss immer wieder während dem Spiel lernen (z.B. Auf das Verhalten der Gegner reagieren)
+Statische Theorien - Immer gleiche Herausvorderungen (Z.B. Schwerer Sprung, Reaktion auf eine Falle)
+
