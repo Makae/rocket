@@ -1,0 +1,31 @@
+- diverse video tutorials für asset handling, parenting, unity handling allg.
+Rigidbody, Collision detection, Colliders:
+http://www.youtube.com/watch?v=ZUGkUEwflJU
+
+- java script in unity tutorials
+http://www.unity-insider.de/tutorials/video-tutorials/javascript-scripting-in-unity
+
+http://forum.unity3d.com/threads/newbie-guide-to-unity-javascript-long.34015/
+
+Script Reference von Unity:
+--------------------------------
+
+Schlagwörter:
++ Rigidbody und physikalisches Verhalten
+
+Scriptiing:
+http://unity3d.com/learn/tutorials/modules/beginner/scripting/awake-and-start
+
+Tutorial Stealth
+*************
+Bis Tutorial 105 - danach begonnen mit UnityScript Tutorial:
+http://docs.unity3d.com/Manual/ScriptingSection.html
+
+Kleines Tutorial
+http://unity3d.com/learn/tutorials/modules/beginner/scripting/assignments/spinning-cube
+
+Next Steps:
+--------------
+Layers?
+Tutorial 105 weiterfahren | sinnvoll? anderes Tutorial zu JS..?
+
