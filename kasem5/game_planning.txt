@@ -1,0 +1,9 @@
+Allgemein:
+********
+Ablauf analog unserem Happy Projekt?
+-> Dort die Eckpunkte rausnehmen.
+
+http://gameindustry.about.com/od/game-development/a/How-To-Plan-A-Game-Development-Project.htm
+
+Links zum PDF gut:
+http://acagamics.cs.ovgu.de/forschung/veranstaltungen/softwareprojekt-spieleentwicklung-ss10/
