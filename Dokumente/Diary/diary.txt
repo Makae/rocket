@@ -1,0 +1,7 @@
+26.09.2014	ALLE		Recherche Automatentheorie, Requirement Engineering Teil bearbeitet auf Basis der Literatur von Pohl/Rupp
+								Spielkonzeptideen gesammelt -> Spiel_Grobkonzept.doch
+								Einrichtung des Repositorys
+								Arbeitsjournal und Projektplanungsdokument erstellt
+								
+					TASK	Jedes Mitglied präsentiert 2 Ideen zum SpielZIEL
+								Besprechung am SO 28.09.2014
