@@ -7,4 +7,8 @@
 								Besprechung am SO 28.09.2014
 								Tutorials werden weiterhin selbstständig bearbeitet
 								
+29.09.2014	ALLE		Einigung auf eine grobe Richtung des Spiels
+								Stand der Einarbeitung in die Themen UnityScript und Unity3D Editor geklärt. Alle haben schon Playgrounds entworfen
+								auf denen eigene Versuche durchgeführt werden.
+								
 								
