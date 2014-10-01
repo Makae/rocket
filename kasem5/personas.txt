@@ -1,0 +1,20 @@
+Daniel Hauenstein
+-----------------
+Alter: 35
+Geschl.: M
+Beruf: Bänker
+Wohnort: Bern
+Zivilstand: Verheiratet
+Kinder: ein Junge ein Mädchen
+Hobbies: Beruf
+Ausbildung: Master in Wirtschaft
+
+Erwartungen an die Website:
+Sein Alltag ist sehr stressig auf Grund von Job und Familie. Beim bedienen legt er daher grossen Wert auf die Geschwindigkeit des Shops so wie die Übersichtlichkeit der Oberfläche.
+Sein Bücherfokus zielt hauptsächlich auf Fachbücher für sich und Kinderbücher für seine kleinen. Beim ausfüllen der Zahlungsinformationen verlangt er auf Grund seines Berufshintergrundes ein reibungsloses Ablaufen über die konventionellen Zahlungsmittel (EZ / CC / Paypal). Die Datensicherheit hat bei ihm sehr hohe Priorität, da er sein Geld nicht verlieren will und er eine sehr grosse Kreditwürdigkeit hat.
+
+User-Stories
+------------
+Suchen eines Buches
+
+Daniel möchte ein neues Buch betreffend "Investment Management" suchen. Dies macht er über die global sichtbare
