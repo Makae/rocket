@@ -11,4 +11,6 @@
 								Stand der Einarbeitung in die Themen UnityScript und Unity3D Editor geklärt. Alle haben schon Playgrounds entworfen
 								auf denen eigene Versuche durchgeführt werden.
 								
+01.10.2014	schwf5	Projektmanagementteil: 
+								Essenzen aus den Dokumenten zur Startanalyse & Requirement Engineering in unsere Projektdokumentation aufgenommen.								
 								
