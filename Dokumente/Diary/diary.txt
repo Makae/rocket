@@ -15,3 +15,5 @@
 								Essenzen aus den Dokumenten zur Startanalyse & Requirement Engineering in unsere Projektdokumentation aufgenommen.
 
 01.10.2014	kasem5	UseCase Diagramm für Spieler und AI hinzugefügt
+01.10.2014	ALLE	Wichtigeste Use Cases aufgeschrieben und verteilt auf Gruppenmitglieder
+02.10.2014	tschm23	Appendix erweitert, Spieler Use cases erfasst, Nice-To-Have Ideen gesammelt und aufgeschrieben.
