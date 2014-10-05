@@ -20,3 +20,5 @@
 03.10.2014	ALLE		Use Cases gegen-gecheckt
 								Aus Use Cases Task fürs Backlog extrahiert
 								Tasks aufgeschrieben und für die nächsten Tage Aufgaben verteilt
+04.10.2014	schwf5	Stealth Tutorial Chapter 4 bearbeiter. Ansätze zur Gegner/Player-Wahrnehmnung
+05.10.2014	schwf5	In eigenem Playground Eine Figur eine andere wahrnehmen lassen, mit Hindernissen und eigenen Erweiterungen
