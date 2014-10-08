@@ -25,3 +25,4 @@
 05.10.2014  kasem5  Stealth Tutorial Videos betreffend Gegner-KI und Animation
 05.10.2014	schwf5	In eigenem Playground Eine Figur eine andere wahrnehmen lassen, mit Hindernissen und eigenen Erweiterungen
 08.10.2014  kasem5  Stealth Tutorial Videos betreffend Gegner-KI und Animation
+08.10.2014	schwf5	Steuerungsmöglichkeiten am bearbeiten
