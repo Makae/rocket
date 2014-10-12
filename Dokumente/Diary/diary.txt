@@ -29,7 +29,9 @@
 10.10.2014	Alle 	Mit Eckerles bisherigen Stand besprochen, Ideen sind ok, aber Automatentheorie sollte bereits in der Spielstory angedacht werden.
 			Spielstory überarbeiten. 
 10.10.2014	Alle 	Aufgaben auf 15.10: Kapitel 3.5.9 lesen, neue Ideen beim/nach dem Lesen am Mittwoch mitbringen um die Story zu verfeinern. 
+12.10.2014	schwf5	Entwurf des separaten Dokuments "Anforderungsdokument" für das Projektmanagement
 15.10.2014	Alle	PDF mit Spielstory abschliessen und Eckerle machen.
 			Requirements sammeln, die aus dieser Story resultieren.
+
 
 
