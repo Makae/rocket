@@ -27,9 +27,11 @@
 08.10.2014  kasem5  Stealth Tutorial Videos betreffend Gegner-KI und Animation
 08.10.2014	schwf5	Steuerungsmöglichkeiten am bearbeiten
 10.10.2014	Alle 	Mit Eckerles bisherigen Stand besprochen, Ideen sind ok, aber Automatentheorie sollte bereits in der Spielstory angedacht werden.
-			Spielstory überarbeiten. 
-10.10.2014	Alle 	Aufgaben auf 15.10: Kapitel 3.5.9 lesen, neue Ideen beim/nach dem Lesen am Mittwoch mitbringen um die Story zu verfeinern. 
+			Spielstory überarbeiten.
+10.10.2014	Alle 	Aufgaben auf 15.10: Kapitel 3.5.9 lesen, neue Ideen beim/nach dem Lesen am Mittwoch mitbringen um die Story zu verfeinern.
+11.10.2014	Überlegungen zu Zustandsautomaten im Spiel
 12.10.2014	schwf5	Entwurf des separaten Dokuments "Anforderungsdokument" für das Projektmanagement
+12.10.2014	kasem5	Abschnitt für Hirarchische Zustandsautomaten im Buch gelesen. Lesen des Entwurfes von "Anforderungsdokument"
 15.10.2014	Alle	PDF mit Spielstory abschliessen und Eckerle machen.
 			Requirements sammeln, die aus dieser Story resultieren.
 
