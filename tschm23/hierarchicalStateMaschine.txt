@@ -1,0 +1,24 @@
+Zusammenfassung Hierarchical State Pattern
+-------
+- Auf unterschiedlichen Level sind State pattern angelegt, die als aufruf auch höher oder tiefergelgene State Pattern haben können.
+- Es wird immer das eigene Pattern und der aktuelle State übergeben, sonst default state
+
+
+- ein State Aufruf gibt immer 2 states zurück, der erste ist er selber (State L), der 2te kann leer sein und ist der aktuell laufende State A innerhalb von State L
+
+State Update
+1. Checken, ob der State einen aktiven State hat? -> wenn nicht, den Initialstate setzen (H*)
+2. checken, schauen ob eine Verschiebung zu einem höher priorisierten State am laufen ist. (Niedrigere Prios können ignoriert werden, und kommen erst zum zug wenn 
+der Aktuelle State nicht mehr aktiv verfolgt wird.
+3. Die getriggerte State kann 3 Stati einnehmen: zero, (state auf gleicher ebene), höher als 0 (so viele Levels höher), oder kleiner als 0 (so viele
+level tiefer)
+
+	Verhalten
+	Zero - Gleich wie finite State maschine, keine Level sind involviert
+	Higher - Stop in diesem Level, aufruf von Exit-Action vom nächst höheren level mit dem Eigenen Zustand als "unterbrochen", also dass hier die Aktion aufgenommen werden soll
+		beim zurückkeren
+	lower - bei kleinerem Wert, wird rekursiv eine "updateDown" funktion aufgerufen, die nach und nach absteigt und alle Kinder aufruft, bis das aufzurufende
+		level erreicht wird mit der Ziel-State.Dabei müssen alle aktionen, die beim absteigen erzeugt werden, gesammelt werden und aufgerufen werden.
+4. Beim Nach oben geben, wir zuerst geschaut ob, das level, nachdem man eins abgezogen hat, immer noch grösser als 0 ist, wenn ja, weiter nach oben geben mit
+	den informationen: 	exit aktion, aktion vom aktuellen update state befehl,die Verschiebung und das Verschiebungslevel minus 1.
+5. Pro State kann es immer Eingangs, - Während,- und Exit - Funktionen geben. (entry, active, exit). wie bei den infinit States
