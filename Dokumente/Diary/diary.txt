@@ -34,6 +34,6 @@
 12.10.2014	kasem5	Abschnitt für Hirarchische Zustandsautomaten im Buch gelesen. Lesen des Entwurfes von "Anforderungsdokument"
 15.10.2014	Alle	PDF mit Spielstory abschliessen und Eckerle machen.
 			Requirements sammeln, die aus dieser Story resultieren.
-
+26.10.2015  kasem5  Tests C# files betreffend MessageDispatcher und EntityManager erstellt
 
 
