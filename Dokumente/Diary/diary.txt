@@ -32,8 +32,11 @@
 11.10.2014	Überlegungen zu Zustandsautomaten im Spiel
 12.10.2014	schwf5	Entwurf des separaten Dokuments "Anforderungsdokument" für das Projektmanagement
 12.10.2014	kasem5	Abschnitt für Hirarchische Zustandsautomaten im Buch gelesen. Lesen des Entwurfes von "Anforderungsdokument"
-15.10.2014	Alle	PDF mit Spielstory abschliessen und Eckerle machen.
-			Requirements sammeln, die aus dieser Story resultieren.
-26.10.2015  kasem5  Tests C# files betreffend MessageDispatcher und EntityManager erstellt
+15.10.2014	Alle	PDF mit Spielstory abschliessen und Eckerle machen. Requirements sammeln, die aus dieser Story resultieren.
+22.10.2014  Alle Theoretische Grundlagen zu Automaten und FSM / HFSM gelsesen. Diverse Empfehlungen von J. Eckerle und einiges Material durchgearbeitet
+24.10.2014 Alle Meeting mit J. Eckerle. Diskussion über das weitere Vorgehen.			
+26.10.2014 schwf5 Szenario für die Modellierung der Räume ausgearbeitet und Klassendiagramme dazu erstellt		
+26.10.2014  kasem5  Tests C# files betreffend MessageDispatcher und EntityManager erstellt
+27.10.2014 schwf5 Erste Versuche mit C# und der Modellierung der gefundenen Klassen für die Räume
 
 
