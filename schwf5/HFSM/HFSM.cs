@@ -12,7 +12,7 @@ public class HFSM {
 	public AbstractHState PatrolState;
 	public AbstractHState PluggedInState;
 	public AbstractHState RechargingState;
-	public AbstractHState SearchState; 	
+	public AbstractHState SearchState;
 	private AbstractHState currentState;
 	private AbstractHState previousState;
 	private int currentStateLevel;
@@ -20,14 +20,14 @@ public class HFSM {
 	public HFSM()
 	{
 		//ACHTUNG REIHENFOLGE!!
-		TopLevel = new TopLevel (this, this.TopLevel); 
+		TopLevel = new TopLevel (this, this.TopLevel);
 		AkkuState = new AkkuState (this, this.TopLevel);
 		PluggedInState = new PluggedInState (this, this.TopLevel);
 
 		OnDutyState = new OnDutyState (this, this.AkkuState);
 		IdleState = new IdleState (this, this.AkkuState);
 		InitState = new InitState (this, this.AkkuState);
-	
+
 		PatrolState = new PatrolState (this, this.OnDutyState);
 		ChasingState = new ChasingState (this, this.OnDutyState);
 
@@ -44,11 +44,10 @@ public class HFSM {
 	/* Einfaches Einsteigen in einen State. Ist der State bereits ein verschachtelter State, werden auf dem Weg dortin alle StateEntries durchlaufen  */
 
 	public void setState(AbstractHState newState) {
-	
+
 		if(this.currentState!=this.TopLevel) //Nur speichern, wenn es nicht ein call ist, bei dem man beim TopLevel vorbeikam
 			this.previousState = this.currentState;
-			
-	
+
 		if (getLevel (newState) == getLevel (this.currentState)) {
 
 			//Prüfen ob innerhalb des gleichen gleichem States, falls nein, bis zum Toplevel rauf und auf dem Weg alles exiten:
@@ -70,17 +69,17 @@ public class HFSM {
 		}
 
 		//Wenn der Level vom Ziel grösser ist, befindet es sich tiefer in der Hierachie:
-		if (getLevel (newState) > getLevel (this.currentState)) { 
+		if (getLevel (newState) > getLevel (this.currentState)) {
 
 			changeStateToDeeperLevel(newState);
 	}
 
 
 		else {
-		
+
 			Debug.Log ("Der ZielState ist auf einem kleineren Level, also weiter oben");
 			setStateWithExit (newState); }
-			
+
 
 }//END OF SET STATE
 
@@ -89,22 +88,22 @@ public class HFSM {
 
 	public void changeStateToDeeperLevel(AbstractHState newState) {
 
-		Debug.Log ("Zielstate ist weiter unten in der Hierarchie. Ist es ein Substate?: " + checkOnSubState (newState)); 
+		Debug.Log ("Zielstate ist weiter unten in der Hierarchie. Ist es ein Substate?: " + checkOnSubState (newState));
 		//In dem Array sind alle States vom Zielstate bis rauf zum TopLevel
 
 		//Wenn der Zielstate nicht im gleichen Branch ist, muss zuers talles bis zum TopLevel verlassen werden
 		if (!checkOnSubState (newState)) {
-								
+
 			while(this.currentState != this.TopLevel) {
 				this.currentState.doExit ();
 				this.currentState=this.currentState.getParentState();
 			}
 			//Und nachdem man im TopLevel angelangt ist, von dort runter zum Ziel
 			Debug.Log ("NUN IM: " + this.currentState.ToString ());
-						
+
 		}
 
-		ArrayList stations = getStatesAbove (newState); 
+		ArrayList stations = getStatesAbove (newState);
 		int statesToPass = (stations.Count - 1);
 
 		//Falls das Ziel in einem anderen Branch war, hat man mit dem if oben in den TopLevel gewechselt. Ansonsten ist man in einem State der den ZielState als substate hat
@@ -117,13 +116,13 @@ public class HFSM {
 			stations.RemoveAt (statesToPass);
 			statesToPass--;
 			this.currentState.entry ();
-			
+
 		}
 
 	}
 
+  // @mkaeser: wie sieht es mit states in trees auf dem 3tem level aus?
 	public void changeStateOnSameLevel(AbstractHState newState) {
-
 		Debug.Log ("Wechsel auf gleichem Level");
 		this.currentState.doExit();
 		this.currentState = newState;
@@ -140,14 +139,14 @@ public class HFSM {
 	}
 
 
-	/* Hilfsmethode von setState: Wenn das Zielstatelevel kleiner ist, gehts nach oben in der Hierachie und alle ExitStates auf dem Weg werden ausgeführt  
+	/* Hilfsmethode von setState: Wenn das Zielstatelevel kleiner ist, gehts nach oben in der Hierachie und alle ExitStates auf dem Weg werden ausgeführt
 	 Dann noch eine Methode machen, die sich den Stand nur merkt und einfach wechselt ohne Exits*/
 	public void setStateWithExit(AbstractHState newState) {
 
 
 		while (currentState.getParentState()!=newState.getParentState()) {
 						//Debug.Log ("Aktueller Status" + this.currentState.ToString ());
-						
+
 			if(this.currentState == this.TopLevel) {
 						Debug.Log ("Toplevel erreicht: Also liegt es auf anderem Branch");
 						setState(newState);
@@ -157,13 +156,13 @@ public class HFSM {
 						this.currentState.exit ();
 						this.currentState = this.currentState.getParentState ();
 				}
-	
+
 		//Nur verlassen, wenn man unterhalb des TopLevels wechselt
-		if(this.currentState!=newState)			
+		if(this.currentState!=newState)
 			this.currentState.exit ();
 
 						this.currentState = newState;
-						newState.entry ();	
+						newState.entry ();
 		}
 
 
@@ -202,7 +201,7 @@ public class HFSM {
 			if(newState == this.currentState){
 				isSubstate=true;
 			}
-		
+
 		}
 		return isSubstate;
 
@@ -222,7 +221,7 @@ public class HFSM {
 
 
 	public int getLevel(AbstractHState state) {
-				
+
 		int i = 0;
 
 		if (state == this.TopLevel)
@@ -230,8 +229,8 @@ public class HFSM {
 
 		else {
 			while (state.getParentState()!=this.TopLevel) {
-				i++; 
-				state = state.getParentState ();			
+				i++;
+				state = state.getParentState ();
 			}
 					}
 		return i+1;
