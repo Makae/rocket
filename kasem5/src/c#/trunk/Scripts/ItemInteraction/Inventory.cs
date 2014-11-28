@@ -25,6 +25,15 @@ public class Inventory : MonoBehaviour {
 		this.Items.Add (item);
 	}
 
+	public void RemoveItem(Item item) {
+		for(var i = 0; i < this.Items.Count; i++) {
+			if(this.Items[i] != item)
+				continue;
+			this.Items.Remove(item);
+			break;
+		}
+	}
+
 	public Item GetCurrentItem() {
 		if(this.Items.Count == 0) {
 			return null;

@@ -5,10 +5,16 @@ using System.Collections.Generic;
 public class InteractionMessage : MonoBehaviour, IMessageReceiver {
 	public string[][] Label;
 	private static int Counter = 0;
-	private string EntKey;
+	private int Idx;
+	private string Identifier = "im";
+	public string EntKey {
+		get { 
+			return this.Identifier + "_" + this.Idx; 
+		} 
+	}
 
 	void Start() {
-		this.EntKey = "im_" + InteractionMessage.Counter++;
+		this.Idx = InteractionMessage.Counter++;
 		EntityManager.RegisterEntity(this.EntKey, this);
 	}
 

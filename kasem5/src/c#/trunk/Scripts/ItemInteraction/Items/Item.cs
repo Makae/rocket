@@ -7,7 +7,7 @@ public class Item : AbstractGameEntity {
 	
 	override public string EntKey {
 		get { 
-			return this.Identifier + "_" + this.Idx; 
+			return this.Identifier; 
 		} 
 	}
 	

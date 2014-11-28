@@ -37,12 +37,12 @@ public class PlayerObject : AbstractGameEntity {
 	private void Interact(IMessageReceiver comp) {
 		float delay = 0;
 		string from = this.EntKey;
-		string to = ((AbstractGameEntity) comp).EntKey;
+		string to = ((IMessageReceiver) comp).EntKey;
 		string message = "interact";
 
 		Hashtable args = new Hashtable();
 		args["item"] = this.Inventory.GetCurrentItem();
-
+		
 		MessageDispatcher.Instance().Dispatch(delay, from, to, message, args);
 	}
 

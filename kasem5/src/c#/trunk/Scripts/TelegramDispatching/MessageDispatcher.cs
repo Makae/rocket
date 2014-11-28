@@ -43,8 +43,12 @@ public class MessageDispatcher : MonoBehaviour {
     }
 
 	foreach(IMessageReceiver entity in group) {
-	  if(entity != null && entity is IMessageReceiver)
+//	  Debug.Log ("Sending Message To");
+//	  Debug.Log(entity);
+	  if(entity != null && entity is IMessageReceiver) {
+		
 		((IMessageReceiver) entity).OnMessage(telegram);
+	  }
     }
 
   }

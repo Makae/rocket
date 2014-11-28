@@ -24,7 +24,7 @@ public class Destroyable : AbstractGameEntity, IDestroyable {
 		this.Health = this.Health - (int) t.Args["amount"];
 		if(this.Health <=0)
 			this.transform.localPosition = new Vector3(0, 9999, 0);
-		Debug.Log("New Health:" + this.Health);
+		
 	}
 	
 	new public void Awake() {
