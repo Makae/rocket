@@ -13,7 +13,7 @@ Dann hat man Optionenmenu, welches über GUI auf Screen erscheint.:
 a) enable Elevator
 b) Code for arming of the bomb (ändert ständig?)
 c) unlock Treasureroom1 *
-d) Pause Robots for X Seconds (-> Weil die Wahrscheinlichkeit, die Bombe zu platzieren und dabei vom Roboter nicht erwischt zu werden sehr klein ist)
+d) Pause Robots for X Seconds (-> Weil die Wahrscheinlichkeit, die Bombe zu platzieren und dabei vom Roboter nicht erwischt zu werden sehr klein ist. Ein Roboter patroulliert / bewacht den Lift)
 
 +) reset (locked Räume, ändert Code, lockt Elevator)
 
