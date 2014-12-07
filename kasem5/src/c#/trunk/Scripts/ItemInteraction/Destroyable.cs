@@ -22,6 +22,7 @@ public class Destroyable : AbstractGameEntity, IDestroyable {
 			return;
 		
 		this.Health = this.Health - (int) t.Args["amount"];
+		TextDisplayer.setMessage("Duration: " + this.Health, 2, 2.0f);
 		if(this.Health <=0)
 			this.transform.localPosition = new Vector3(0, 9999, 0);
 		
