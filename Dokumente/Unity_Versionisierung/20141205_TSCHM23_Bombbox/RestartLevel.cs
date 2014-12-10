@@ -53,7 +53,7 @@ public class RestartLevel : MonoBehaviour {
 			//LastPlayerSighting lastPlayerSighting = enemy2.GetComponent<LastPlayerSighting>();
 			//lastPlayerSighting.position = lastPlayerSighting.resetPosition;
 
-			Application.LoadLevel("Main_Menu"); //go to Mainmenu
+			Application.LoadLevel("Menu_Main"); //go to Mainmenu
 			//Application.LoadLevel (Application.loadedLevel); //restart level
 		}
 	}

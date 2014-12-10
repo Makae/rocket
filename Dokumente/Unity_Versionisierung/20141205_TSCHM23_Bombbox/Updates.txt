@@ -50,3 +50,17 @@ Siehe File: Menu_Main.unitypackage, diese Prefabs auch importieren, neue Szene e
 		Application.LoadLevel("Menu_Options");
 
 		Application.LoadLevel("Menu_Load");
+
+
+
+		Enemy - 
+
+		Die Grundidee ist, dass ein oder Mehrere Roboter dem Spieler während dem Spielen gefährlich werden können.
+		Dabei sollen die Anzahl der Aktiven Roboter schnell und einfach erweitert werden können, ohne viel Code anzupassen.
+		Der Roboter verfügt über dazu über unterschiedlichen "Routinen" wie zum Beispiel "Patrol" , "Recharging" oder "Chase".
+		Weiter verfügt der Roboter über eine interne Batterie, die ihn am Laufen hält.
+		Weiteres Konzept is die SIcht
+
+			Sicht
+			Jeder Gegner soll unabhängig vom Typ in der Lage sein, den Spieler in einem Gewissen Sichtradius zu orten.
+			Dazu habe ich das Script "";
