@@ -30,15 +30,23 @@ Es werden folgende Scene erwartet. Das hauptlevel ist level1,
 die Menüpunkte sind selbsterklärend.
 
 
-		Application.LoadLevel("level1");
+		Application.LoadLevel("level1"); // ist das Eigentliche Level, welches geladen wird.
 
+		Application.LoadLevel("Menu_Main"); // ist das hauptmenu
+
+
+		Einfach unter "File - Build Settings... " die Szene "Menu_Main" einbindne.
+
+
+Dazu auch die Scripts changeMenu.js, GameMenu.js und RestartLevel.cs ersetzen
+
+
+
+File: Menu_Credits, Menu_Load, Menu_Options.
+-------------------------------------------
+Siehe File: Menu_Main.unitypackage, diese Prefabs auch importieren, neue Szene erstellen , hineinziehen, GameController auch reinziehen, unter richtigem Name Speichern.
 		Application.LoadLevel("Menu_Credits");
 
 		Application.LoadLevel("Menu_Options");
 
 		Application.LoadLevel("Menu_Load");
-
-		Application.LoadLevel("Menu_Main");
-
-		Einfach unter "File - Build Settings... " die Szene "Menu_Main" einbindne.
-
