@@ -20,13 +20,16 @@ File: Patrol_1.unitypackage
 Die Patrol hier wie von schwf5 beschrieben ins level1.unity Scene importieren. Diese Objekte sind mit Patrol_1 getagged und können so von EnemyAi gefunden werden
 
 
-Menu_Main
+File: Menu_Main.unitypackage
 ----------
+Menu_Main.unitypackage unter Prefabs via Import einbinden, beschreibung von Fäbu verwenden wenn unklar,
+Menu einbinden:
+Existiert eine Scene noch nicht, neue Szene erstellen, z.B. Menu_Main Prefab reinziehen, das GameController Prefab reinziehen und die Szene als "Menu_Main" abspeichern.
 
 Es werden folgende Scene erwartet. Das hauptlevel ist level1,
 die Menüpunkte sind selbsterklärend.
-Einfach unter "File - Build Settings... " die Szene einbindne.
-Existiert eine Scene noch nicht, neue Szene erstellen, z.B. Menu_Main Prefab reinziehen, das GameController Prefab reinziehen und die Szene als "Menu_Main" abspeichern.
+
+
 		Application.LoadLevel("level1");
 
 		Application.LoadLevel("Menu_Credits");
@@ -36,4 +39,6 @@ Existiert eine Scene noch nicht, neue Szene erstellen, z.B. Menu_Main Prefab rei
 		Application.LoadLevel("Menu_Load");
 
 		Application.LoadLevel("Menu_Main");
+
+		Einfach unter "File - Build Settings... " die Szene "Menu_Main" einbindne.
 
