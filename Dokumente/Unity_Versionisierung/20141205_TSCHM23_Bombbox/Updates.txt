@@ -1,0 +1,20 @@
+Was wurde verändert?
+---------------------
+Files: Menu_Main
+-----------------
+- Menü hinzugefügt. Als Prefab importieren, Neue Szene erstellen, Maincamera löschen, Prefab "Menu_Main" in die Hierarchy ziehen, GameController Prefab in die Hierarchy Ziehen
+ fertig
+
+Files: Bomb_box importieren.
+- Bomb_box hat ein Mesh Collider
+- Patrol ist auf der richtigen höhe
+
+File: EnemyAI.cs
+---------------
+1. Patrol - Punkte werden jetzt beim initialisieren in der richtigen menge und Reihenfolge geladen, getaggt sind die Patrol Punkte mit "Patrol_1"
+
+
+
+File: Patrol_1.unitypackage
+-------------
+Die Patrol hier wie von schwf5 beschrieben ins level1.unity Scene importieren. Diese Objekte sind mit Patrol_1 getagged und können so von EnemyAi gefunden werden
