@@ -64,3 +64,8 @@ Siehe File: Menu_Main.unitypackage, diese Prefabs auch importieren, neue Szene e
 			Sicht
 			Jeder Gegner soll unabhängig vom Typ in der Lage sein, den Spieler in einem Gewissen Sichtradius zu orten.
 			Dazu habe ich das Script "";
+
+
+File: Screenfader.unitypackage
+---------------------------------
+File als Prefab importieren. Prefab aus der screenfader aus der Hierarchie löschen, prefab in Hierarchie ziehen.
