@@ -27,10 +27,10 @@ public class EnemyAI : MonoBehaviour
 	public bool isActive = false; 							//is the robot activ?
 	public bool enemyInSight = false;						//is the enemy in sight?
 	public static bool initIsActiv = true; 				// what is the start value of the robot isActive-State
-	public static float normalPowerUse = -1.0f;				// battery use under normal conditions
+	public static float normalPowerUse = -3.0f;				// battery use under normal conditions
 	public float powerChange;								// active powerChange, can change
 	public float batteryLevel = 0f;							//batteryLevel - changes with every update
-	public static float initBatteryLevel = 40f; 			//Starting value for BatteryLevel
+	public float initBatteryLevel = 40f; 			//Starting value for BatteryLevel
 	public static float maxBatteryLevel = 100f; 			//Maximum possible BatteryLevel 
 	public static float criticalBatteryLevel = 30f;			//Level of Battery to change state to recharge
 	public static float maxRechargingSpeed = 10f;			//Maximum recharging speed - to limit the recharge Duration per Robot
@@ -47,12 +47,12 @@ public class EnemyAI : MonoBehaviour
 	//var stateChangeSound : AudioClip;
 
 
-	private string sound_criticalBattary = "3beep_2";			//transformname of the element holding the alarm Music
+	//private string sound_criticalBattary = "3beep_2";			//transformname of the element holding the alarm Music
 	private AudioSource robot_voice;
 
 	private EnemySight enemySight;                          // Reference to the EnemySight script.
 	private NavMeshAgent nav;                               // Reference to the nav mesh agent.
-	private Transform player;                               // Reference to the player's transform.
+	//private Transform player;                               // Reference to the player's transform.
 	//private PlayerHealth playerHealth;                      // Reference to the PlayerHealth script.
 	private LastPlayerSighting lastPlayerSighting;          // Reference to the last global sighting of the player.
 	private float chaseTimer;                               // A timer for the chaseWaitTime.
@@ -71,15 +71,21 @@ public class EnemyAI : MonoBehaviour
 	//public GameObject selector; //selected in the editor
 	public GameObject[] waypoints;
 
+	//HFSM implementation
+	HFSM stateMachine;
+
 	void Awake ()
 	{
+
+
+
 		// Setting up the references.
 		enemySight = GetComponent<EnemySight>();
 		nav = GetComponent<NavMeshAgent>();
 		powerChange = normalPowerUse; //set normal power consumption
 
 		//Creates a variable to check the objects position.
-		player = GameObject.FindGameObjectWithTag(Tags.player).transform;
+		//player = GameObject.FindGameObjectWithTag(Tags.player).transform;
 		//playerHealth = player.GetComponent<PlayerHealth>();
 		lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
 		changeState("Patrolling");
@@ -101,7 +107,10 @@ public class EnemyAI : MonoBehaviour
 		batteryLevel = initBatteryLevel; //starting value for battery
 		isActive = initIsActiv; //starting value for isActive
 
-
+		//set starting State
+		Debug.Log ("************************* HFSM New **************************");
+		this.stateMachine = new HFSM ();
+		this.stateMachine.setState (this.stateMachine.PatrolState);
 
 		//waypoint_1.position = new Vector3(-15.67651f,0.5f,0f);
 		//patrolWayPoints[0]. = waypoint_1;
@@ -131,6 +140,7 @@ public class EnemyAI : MonoBehaviour
 		if (isRobotActive()) {
 			//Debug.Log ("is active");
 		
+
 
 
 			addBatteryLevel(); //pro Update use/give some energy
@@ -334,7 +344,7 @@ public class EnemyAI : MonoBehaviour
 
 	//used to manage statechanges, and do actions between them.
 	void changeState(string toThisState ){
-		string logtext = "from State" + this.state + " to state " + toThisState;
+		//string logtext = "from State" + this.state + " to state " + toThisState; //used to debug things
 		//Debug.Log(logtext);
 		if (this.state != toThisState) {
 			lastState = this.state;
