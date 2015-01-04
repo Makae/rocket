@@ -69,3 +69,10 @@ Siehe File: Menu_Main.unitypackage, diese Prefabs auch importieren, neue Szene e
 File: Screenfader.unitypackage
 ---------------------------------
 File als Prefab importieren. Prefab aus der screenfader aus der Hierarchie löschen, prefab in Hierarchie ziehen.
+
+
+Robot_2 und Patrol_2
+--------------------
+Einfach prefabs Robot_2 und Patrol_2 reinziehen, RoboterAi.cs einbinden.
+Darauf achten, dass die Waypoints von Patrol_2 auch mit "Patrol_2" getagged sind.
+Die Türen von Raum A, B und C als NICHT Statisch markieren, und dann nochmal das Nav-Mesh baken. Dann sollte der Robot_2 auch seine beiden Wegpunkte finden.
