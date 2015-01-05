@@ -13,12 +13,7 @@ public class EnemyAI : MonoBehaviour
 	public float chaseWaitTime = 5f;                        // The amount of time to wait when the last sighting is reached.
 	public float patrolWaitTime = 2f;                       // The amount of time to wait when the patrol way point is reached.
 	public Transform[] patrolWayPoints;                     // An array of transforms for the patrol route.
-	public Transform waypoint_1;
-	public GameObject[] patrols;
-	//public Transform waypoint_2 = new Vector3(62.85906f,0f,0f);
-	//public Transform waypoint_3 = new Vector3(18.15f,0f,-31.9f);
-	//public Transform waypoint_4 = new Vector3(18f,0f,-47.25f);
-	//public Transform waypoint_5 = new Vector3(24.4f,0f,7.33f);
+	public GameObject[] patrols;							// An gameobject array to hold all patrol points
 
 
 	//todo patrol tag and foreach over all waypoints to set them
@@ -27,20 +22,20 @@ public class EnemyAI : MonoBehaviour
 	public bool isActive = false; 							//is the robot activ?
 	public bool enemyInSight = false;						//is the enemy in sight?
 	public static bool initIsActiv = true; 				// what is the start value of the robot isActive-State
-	public static float normalPowerUse = -3.0f;				// battery use under normal conditions
+	public static float normalPowerUse = -1.0f;				// battery use under normal conditions
 	public float powerChange;								// active powerChange, can change
 	public float batteryLevel = 0f;							//batteryLevel - changes with every update
-	public float initBatteryLevel = 40f; 			//Starting value for BatteryLevel
-	public static float maxBatteryLevel = 100f; 			//Maximum possible BatteryLevel 
-	public static float criticalBatteryLevel = 30f;			//Level of Battery to change state to recharge
-	public static float maxRechargingSpeed = 10f;			//Maximum recharging speed - to limit the recharge Duration per Robot
+	public float initBatteryLevel = 90f; 			//Starting value for BatteryLevel
+	public float maxBatteryLevel = 100f; 			//Maximum possible BatteryLevel 
+	public float criticalBatteryLevel = 30f;			//Level of Battery to change state to recharge
+	public float maxRechargingSpeed = 10f;			//Maximum recharging speed - to limit the recharge Duration per Robot
 	public Vector3 myLastPosition;                   		// an 3d position of the robot, last known position, so he can return to it.
 	public Vector3 myActualPosition;                     	// an 3d position of the robot, actual position
 
 	public GameObject[] gos;								//tagged objects 
 	public GameObject closest;								//closest object found
 	public string state;									//state of robot
-	public string startingState = "Patrolling";				//starting state, todo, save as object or something other than string
+	//public string startingState = "Patrolling";				//starting state, todo, save as object or something other than string
 	public string lastState;								//last state, save for later use
 
 
@@ -48,18 +43,18 @@ public class EnemyAI : MonoBehaviour
 
 
 	//private string sound_criticalBattary = "3beep_2";			//transformname of the element holding the alarm Music
-	private AudioSource robot_voice;
+	public AudioSource robot_voice;
 
-	private EnemySight enemySight;                          // Reference to the EnemySight script.
-	private NavMeshAgent nav;                               // Reference to the nav mesh agent.
+	public EnemySight enemySight;                          // Reference to the EnemySight script.
+	public NavMeshAgent nav;                               // Reference to the nav mesh agent.
 	//private Transform player;                               // Reference to the player's transform.
 	//private PlayerHealth playerHealth;                      // Reference to the PlayerHealth script.
-	private LastPlayerSighting lastPlayerSighting;          // Reference to the last global sighting of the player.
-	private float chaseTimer;                               // A timer for the chaseWaitTime.
-	private float patrolTimer;                              // A timer for the patrolWaitTime.
-	private int wayPointIndex;                              // A counter for the way point array.
-	private float minPlayerDetectionRange = 2f;				// minimum range the player
-	private Skynet skynet;          		               // Skynet object, needed for robot control
+	public LastPlayerSighting lastPlayerSighting;          // Reference to the last global sighting of the player.
+	public float chaseTimer;                               // A timer for the chaseWaitTime.
+	public float patrolTimer;                              // A timer for the patrolWaitTime.
+	public int wayPointIndex;                              // A counter for the way point array.
+	public float minPlayerDetectionRange = 2f;				// minimum range the player
+	public Skynet skynet;          		               // Skynet object, needed for robot control
 
 	public NavMesh mesh;									//nav mesh needed to calculate robot-Paths
 	public Transform nextPowersupply;						//store the transform location of the nearest power supply
@@ -77,8 +72,6 @@ public class EnemyAI : MonoBehaviour
 	void Awake ()
 	{
 
-
-
 		// Setting up the references.
 		enemySight = GetComponent<EnemySight>();
 		nav = GetComponent<NavMeshAgent>();
@@ -92,12 +85,23 @@ public class EnemyAI : MonoBehaviour
 		//state = "Patrolling";//Starting state
 		skynet = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<Skynet>();
 
-		//set the patrol waypoints
-		patrols = GameObject.FindGameObjectsWithTag("Patrol_1").OrderBy( go => go.name ).ToArray();
-		for(int i = 0; i < patrols.Length; i++)
-		{
-			//Debug.Log("Waypoint Number "+i+" is named "+waypoints[i].transform.position.x);
-			patrolWayPoints[i] = patrols[i].transform;
+		//Debug.Log (this.name);
+		//set the patrol waypoints, to the right robot
+		if (this.name == "Robot") {
+			//patrol of robot 1
+				patrols = GameObject.FindGameObjectsWithTag ("Patrol_1").OrderBy (go => go.name).ToArray ();
+				for (int i = 0; i < patrols.Length; i++) {
+					//Debug.Log("Waypoint Number "+i+" is named "+waypoints[i].transform.position.x);
+					patrolWayPoints [i] = patrols [i].transform;
+				}
+		} else {
+			//standard patrol (Robot_2)
+			patrols = GameObject.FindGameObjectsWithTag ("Patrol_2").OrderBy (go => go.name).ToArray ();
+			for (int i = 0; i < patrols.Length; i++) {
+				//Debug.Log("Waypoint Number "+i+" is named "+waypoints[i].transform.position.x);
+				patrolWayPoints [i] = patrols [i].transform;
+			}
+
 		}
 
 	}
@@ -105,12 +109,16 @@ public class EnemyAI : MonoBehaviour
 	//intial Robot 
 	void Start(){
 		batteryLevel = initBatteryLevel; //starting value for battery
+		//only robot is active at the start of the level, robot_2 not
+		//if (this.name == "Robot") {
 		isActive = initIsActiv; //starting value for isActive
-
+		//		} else {
+		//	isActive = isActive;	
+		//}
 		//set starting State
 		Debug.Log ("************************* HFSM New **************************");
-		this.stateMachine = new HFSM ();
-		this.stateMachine.setState (this.stateMachine.PatrolState);
+		Debug.Log (this.name);
+		this.stateMachine = new HFSM (this.name);
 
 		//waypoint_1.position = new Vector3(-15.67651f,0.5f,0f);
 		//patrolWayPoints[0]. = waypoint_1;
@@ -160,32 +168,39 @@ public class EnemyAI : MonoBehaviour
 				//else if(enemySight.personalLastSighting != lastPlayerSighting.resetPosition && playerHealth.health > 0f)
 				if(enemySight.personalLastSighting != lastPlayerSighting.resetPosition){
 				// ... chase.
+
 					Chasing();
 			
 				// Otherwise...
 				}else{
 					//Debug.Log ("call patrolling");
 				// ... patrol the waypoints
+
 					Patrolling();
 				}
 			}
 
 		} else {
 			//Debug.Log ("is inactive");
+			this.stateMachine.setState (this.stateMachine.IdleState);
 			//do nothing 
 		}
 	}
 	
-	
-	void Shooting ()
+	//not yet implemented, could be used if the robot can shoot the player
+	public void Shooting ()
 	{
 		// Stop the enemy where it is.
 		nav.Stop();
 	}
+
+	//XXXXXXXXXXXX OLD functions but working START XXXXXXXXXXXXX
+
 	
-	
-	void Chasing ()
+	public void Chasing ()
 	{
+		this.stateMachine.setState (this.stateMachine.ChasingState);
+		/*
 		changeState("Chasing"); //set the state
 
 		// Create a vector from the enemy to the last sighting of the player.
@@ -218,11 +233,15 @@ public class EnemyAI : MonoBehaviour
 		else
 			// If not near the last sighting personal sighting of the player, reset the timer.
 			chaseTimer = 0f;
+			*/
 	}
+
 	
-	
-	void Patrolling ()
+	public void Patrolling()
 	{
+		this.stateMachine.setState (this.stateMachine.PatrolState);
+
+		/*
 		//this.state = "Patrolling"; //set the state
 		changeState("Patrolling"); //set the state
 		// Set an appropriate speed for the NavMeshAgent.
@@ -252,11 +271,17 @@ public class EnemyAI : MonoBehaviour
 			patrolTimer = 0;
 		//Debug.Log ("set new waypoint position patrolling");
 		// Set the destination to the patrolWayPoint.
+//Debug.Log ("wayPointIndex");
+//Debug.Log (wayPointIndex);
 		nav.destination = patrolWayPoints[wayPointIndex].position;
+		*/
 	}
 
+	//the robot needs to find and go to the nearest PowerSupplay to recharge his battery level
 	public void Recharging()
 	{
+		this.stateMachine.setState (this.stateMachine.RechargingState);
+		/*
 		//save actual state and position, only do it on first entering 
 		if (this.state != "Recharging") {
 			changeState("Recharging");
@@ -264,38 +289,29 @@ public class EnemyAI : MonoBehaviour
 			myActualPosition = transform.position;
 			myLastPosition = myActualPosition;
 		}
-		//this.state = "Recharging"; //set the state
-		//Debug.Log(myActualPosition);
-
-
-		//TODO save last action so you can return to it
-
-
-		//find transform of nearest Powersupply
-		// Print the name of the closest powerSupply
-		//print(FindClosestEnemy().name);
-		//print(FindClosestEnemy().name);
-		//Debug.Log(FindClosestEnemy().name);
-		//print(FindClosestEnemy().name);
-		//FindClosestTagObject("PowerSupply");
-		//Debug.Log(FindClosestTagObject(Tags.powerSupply).transform.position);
 
 		//set new target location
 		nav.destination = FindClosestTagObject(Tags.powerSupply).transform.position;
 
-		//recharging, ...
+
+		//recharging automatically if near a powerstation, ...
 
 
-		//..change to patrolling when you are at maxBattaryLevel
+		//..change to last state when you are at maxBattaryLevel
 		if(maxBatteryLevel <= batteryLevel){
 			//back to last operation
 			changeState(lastState); //set the state
 			//this.state = ; //set the last state
 			nav.destination = myLastPosition;//return to the last location
 		}
+		*/
 	}
 
-	void addBatteryLevel(){
+
+//XXXXXXXXXXXX OLD functions but working ENDE XXXXXXXXXXXXX
+
+	//Drain or restore power to batteryLevel
+	public void addBatteryLevel(){
 		//currentBatteryLife -= batteryLifeLostPerSecond * Time.deltaTime; // Reduces the battery correctly over time
 		this.batteryLevel = this.batteryLevel + this.powerChange * (float)Time.deltaTime; //Drain or restore power
 		//cap the batteryLavel at the maximum and 0
@@ -306,16 +322,10 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 	
-
+	//Find closest Object with a given Tag name
 	public GameObject FindClosestTagObject(string objectName){
-
-		//GameObject[] gos;
-		//GameObject closest;
-		//gos = GameObject.FindGameObjectsWithTag("PowerSupply");
-		//GameObject[] gos;
 		gos = GameObject.FindGameObjectsWithTag(objectName);
-		//gos = GameObject.FindGameObjectWithTag(Tags.powerSupply);
-		//GameObject closest;
+
 		float distance = Mathf.Infinity;
 		Vector3 position = transform.position;
 		foreach (GameObject go in gos) {
@@ -342,8 +352,8 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 
-	//used to manage statechanges, and do actions between them.
-	void changeState(string toThisState ){
+	//used to general actions between ALL statechanges, like playing a sounnd
+	public void changeState(string toThisState ){
 		//string logtext = "from State" + this.state + " to state " + toThisState; //used to debug things
 		//Debug.Log(logtext);
 		if (this.state != toThisState) {
@@ -357,15 +367,9 @@ public class EnemyAI : MonoBehaviour
 	//toggles the robot on and off
 	public void toggleActive(){
 		if(this.isActive){
-			//Debug.Log ("toggeled to false");
 			this.isActive = false;
-			//nav.speed = 0;
-			//nav.Stop();
-
 		}else{
-			//Debug.Log ("toggeled to true");
 			this.isActive = true;
-			//nav.Resume();
 		}
 	}
 
@@ -387,42 +391,6 @@ public class EnemyAI : MonoBehaviour
 		}
 
 	}
-
-	//reset function , normally used after robot gets the player
-	//TODO
-	public void resetRobot(){
-
-	}
-
-	public void getPathToLoadingStation(){
-		//set new target location
-		//Vector3 nearestPowersupplyPos = FindClosestTagObject(Tags.powerSupply).transform.position;
-
-		//NavMesh	mesh.CalculatePath(transform.position, nearestPowersupplyPos, -1, pathToNextPowersupply);
-		//Debug.Log (pathToNextPowersupply);
-		//public NavMesh mesh;									//nav mesh needed to calculate robot-Paths
-		///public Transform nextPowersupply;						//store the transform location of the nearest power supply
-		//public NavMeshPath pathToNextPowersupply;				//navMeshPath to NextPowersupply
-	}
-
-
-	/*
-	float PathLength(NavMeshPath path) {
-		if (path.corners.Length < 2)
-			return;
-		
-		Vector3 previousCorner = path.corners[0];
-		float lengthSoFar = 0.0F;
-		int i = 1;
-		while (i < path.corners.Length) {
-			Vector3 currentCorner = path.corners[i];
-			lengthSoFar += Vector3.Distance(previousCorner, currentCorner);
-			previousCorner = currentCorner;
-			i++;
-		}
-		return lengthSoFar;
-	}
-*/
 
 
 }
