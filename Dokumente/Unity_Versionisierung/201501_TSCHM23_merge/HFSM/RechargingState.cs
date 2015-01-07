@@ -24,7 +24,7 @@ class RechargingState : AbstractHState {
 	}
 
 	public override void startDo(){
-		Debug.Log ("RECHARGING STATE");	
+		//Debug.Log ("RECHARGING STATE");	
 		enemyAi = GameObject.Find(sm.userObjectName).GetComponent<EnemyAI>();
 
 

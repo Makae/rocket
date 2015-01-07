@@ -154,7 +154,7 @@ public class EnemyAI : MonoBehaviour
 			addBatteryLevel(); //pro Update use/give some energy
 			//switch to Recharging, if BatteryLevel is lower than critical state or the state is still in the recharching
 			if(state == "Recharging"){//criticalBatteryLevel > batteryLevel || 
-				//Debug.Log ("Battery critical! Robot needs to Recharge!");
+
 				Recharging();
 			}else{ // Enougth battery,... normal operations
 
@@ -182,7 +182,7 @@ public class EnemyAI : MonoBehaviour
 
 		} else {
 			//Debug.Log ("is inactive");
-			this.stateMachine.setState (this.stateMachine.IdleState);
+			//this.stateMachine.setState (this.stateMachine.IdleState);
 			//do nothing 
 		}
 	}
@@ -354,8 +354,6 @@ public class EnemyAI : MonoBehaviour
 
 	//used to general actions between ALL statechanges, like playing a sounnd
 	public void changeState(string toThisState ){
-		//string logtext = "from State" + this.state + " to state " + toThisState; //used to debug things
-		//Debug.Log(logtext);
 		if (this.state != toThisState) {
 			lastState = this.state;
 			this.state = toThisState; //set the state
@@ -383,7 +381,7 @@ public class EnemyAI : MonoBehaviour
 			return true;
 		} else {
 			//Debug.Log ("stop Nav Mesh Agent");
-			nav.speed = 0;//navMesh Agent Stops his action.
+			//nav.speed = 0;//navMesh Agent Stops his action.
 			nav.Stop();
 			return false;
 

@@ -8,6 +8,8 @@ public class PathUtils : MonoBehaviour {
 	//public var's
 	public float pufferToReachTargetLocation = 30f;		//how much sooner should a robot return to a powerstation? in meter
 	public float lengthToNearestPowersupply = 0.0f;		//holds the distance to next powersupply, will be calculated per update.
+	public EnemyAI enemyAi; 						//enemyAI Script
+
 
 	//private var's
 	private NavMeshAgent agent; 
@@ -20,9 +22,14 @@ public class PathUtils : MonoBehaviour {
 
 
 	public void Update() {
-		//redraw the path every update.
-		DrawPath (agent.path);
-		calcRechargingStateChange (); 
+		enemyAi = GetComponent<EnemyAI>();
+
+		//only draw and calc path if robot is activ
+		if (enemyAi.isRobotActive ()) {
+			//redraw the path every update.
+			DrawPath (agent.path);
+			calcRechargingStateChange ();
+		}
 	}
 
 	//funktion to draw a visible line along the unity path of the owner

@@ -24,7 +24,7 @@ class ChasingState : AbstractHState {
 	}
 
 	public override void startDo(){
-		Debug.Log (" CHASING State");
+		//Debug.Log (" CHASING State");
 		enemyAi = GameObject.Find(sm.userObjectName).GetComponent<EnemyAI>();
 		enemyAi.changeState("Chasing"); //set the state
 		

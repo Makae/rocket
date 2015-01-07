@@ -20,7 +20,7 @@ class PatrolState : AbstractHState {
 	}
 
 	public override void startDo(){
-		Debug.Log ("PATROLSTATE");
+		//Debug.Log ("PATROLSTATE");
 		//Debug.Log (sm.userObjectName);
 		enemyAi = GameObject.Find(sm.userObjectName).GetComponent<EnemyAI>();
 		//enemyAi = GameObject.FindGameObjectWithTag("Robot").GetComponent<EnemyAI>();
