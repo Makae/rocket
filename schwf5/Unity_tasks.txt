@@ -1,0 +1,8 @@
+﻿Bis nächsten Freitag:
+
+- Unity Projekt zum reinladen zur Verfügung stellen
+- Beschreibung in welcher Form Unity mit welchen Komponenten genutzt wird
+-->Funktion die Unity bietet und beschreiben wie wir das gemacht haben an einem Beispiel
+- HFSM Text schreiben und Bilder dazu
+- Erfahrungswerte mit der Umgebung (schwierigkeiten und die Lösungen)
+- Am Ende Projektdokumentation ausdrucken und binden
